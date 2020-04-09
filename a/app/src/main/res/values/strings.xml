@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Quiz EG 1</string>
+    <string name="tv_description">А ты готов к ЕГ?</string>
+    <string name="tap_again">Нажмите назад ещё раз</string>
+</resources>
