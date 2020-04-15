@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.support.v7.widget.Toolbar;
 
@@ -48,6 +49,38 @@ public class BaseActivity extends AppCompatActivity {
 
     public void initLoader() {
         loadingView = findViewById(R.id.loadingView);
+        noDataView = findViewById(R.id.noDataView);
+    }
+
+    public void showLoader() {
+        if (loadingView != null) {
+            loadingView.setVisibility(View.VISIBLE);
+        }
+        if (noDataView != null) {
+            noDataView.setVisibility(View.GONE);
+        }
+    }
+    public void hideLoader() {
+        if (loadingView != null) {
+            loadingView.setVisibility(View.GONE);
+        }
+        if (noDataView != null) {
+            noDataView.setVisibility(View.GONE);
+        }
+    }
+
+    public void showEmptyView() {
+        if (loadingView != null) {
+            loadingView.setVisibility(View.GONE);
+        }
+        if (noDataView != null) {
+            noDataView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
 
