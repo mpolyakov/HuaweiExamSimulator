@@ -2,4 +2,63 @@
     <string name="app_name">Quiz EG 1</string>
     <string name="tv_description">А ты готов к ЕГ?</string>
     <string name="tap_again">Нажмите назад ещё раз</string>
+
+    <!--    app social site link section-->
+    <string name="facebook_url">https://yandex.ru</string>
+    <string name="youtube_url">https://yandex.ru</string>
+    <string name="twitter_user_id">https://yandex.ru</string>
+    <string name="twitter_url">https://yandex.ru</string>
+    <string name="google_plus_url">https://yandex.ru</string>
+
+    <!--    privacy policy url-->
+    <string name="privacy_url">https://yandex.ru</string>
+
+    <!--    site url-->
+    <string name="site_url">https://yandex.ru</string>
+
+    <!--    about developer text-->
+    <string name="developer_name">KT studio</string>
+    <string name="developer_detail">Разработка приложений</string>
+    <string name="developer_message">Данное приложение является сборниктом тестов ЕГЭ по истории</string>
+
+    <string name="site_menu_share">Поделиться</string>
+    <string name="quiz">Тестирование</string>
+    <string name="social">Ресурсы</string>
+    <string name="youtube">Youtube</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="google_plus">Google Plus</string>
+
+    <string name="others">Others</string>
+    <string name="site">https://ya.ru</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="share">Поделиться</string>
+    <string name="rate">Оцените приложение</string>
+    <string name="settings">Настройки</string>
+    <string name="about_dev">О приложении</string>
+    <string name="exit">Выход</string>
+    <string name="site_menu_delete_all">Удалить всё</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>
