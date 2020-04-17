@@ -21,6 +21,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:onClick="clickView"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <TextView
@@ -35,6 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgDev"
+        android:onClick="clickView"
         tools:text="@string/developer_name" />
 
     <TextView
@@ -49,6 +51,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDevTitle"
+        android:onClick="clickView"
         tools:text="@string/developer_detail" />
 
     <TextView
@@ -60,6 +63,7 @@
         android:layout_marginEnd="176dp"
         android:gravity="center"
         android:text="TextView"
+        android:onClick="clickView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDevSubtitle"

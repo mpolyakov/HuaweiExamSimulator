@@ -1,11 +1,15 @@
 package com.kt.std.quizeg1.activity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.kt.std.quizeg1.R;
+import com.kt.std.quizeg1.utilities.ActivityUtilities;
 import com.kt.std.quizeg1.utilities.AppUtilities;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -18,10 +22,12 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private Toolbar toolbar;
     private AccountHeader header = null;
     private Drawer drawer = null;
+    Activity activity;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        activity = MainActivity.this;
+        context = getApplicationContext();
 
         final IProfile profile = new ProfileDrawerItem().withIcon(R.drawable.sharp_star_black_18dp);
 
@@ -39,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 .withOnAccountHeaderProfileImageListener(new AccountHeader.OnAccountHeaderProfileImageListener() {
                     @Override
                     public boolean onProfileImageClick(View view, IProfile profile, boolean current) {
-                        //TODO : invoke custom url activity
+                        ActivityUtilities.getInstance().invokeCustomUrlActivity(activity, CustomUrlActivity.class, getResources().getString(R.string.site),
+                                getResources().getString(R.string.site_url), false);
                         return false;
                     }
 
@@ -76,7 +86,32 @@ public class MainActivity extends AppCompatActivity {
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        //TODO add invoke items
+                        if (drawerItem != null) {
+                            Intent intent = null;
+                            if (drawerItem.getIdentifier() == 10) {
+                                ActivityUtilities.getInstance().invokeNewActivity(activity, AboutDevActivity.class, false);
+
+                            } else if (drawerItem.getIdentifier() == 20) {
+                                AppUtilities.youtubeLink(activity);
+
+                            } else if (drawerItem.getIdentifier() == 21) {
+                                AppUtilities.facebookLink(activity);
+
+                            } else if (drawerItem.getIdentifier() == 22) {
+                                AppUtilities.twitterLink(activity);
+                            } else if (drawerItem.getIdentifier() == 23) {
+                            } else if (drawerItem.getIdentifier() == 30) {
+//TODO invoke setting activity
+                            } else if (drawerItem.getIdentifier() == 31) {
+                                AppUtilities.rateThisApp(activity);
+                            } else if (drawerItem.getIdentifier() == 32) {
+                                AppUtilities.shareApp(activity);
+                            } else if (drawerItem.getIdentifier() == 33) {
+                                ActivityUtilities.getInstance().invokeCustomUrlActivity(activity, CustomUrlActivity.class, getResources().getString(R.string.privacy), getResources().getString(R.string.privacy_url), false);
+                            } else if (drawerItem.getIdentifier() == 40) {
+
+                            }
+                        }
                         return false;
                     }
                 })
@@ -89,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (drawer != null && drawer.isDrawerOpen()){
+        if (drawer != null && drawer.isDrawerOpen()) {
             drawer.closeDrawer();
         } else {
             AppUtilities.tapPromtToExit(this);
