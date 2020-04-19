@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.kt.std.quizeg1.R;
+import com.kt.std.quizeg1.models.quiz.CategoryModel;
 import com.kt.std.quizeg1.utilities.ActivityUtilities;
 import com.kt.std.quizeg1.utilities.AppUtilities;
 import com.mikepenz.materialdrawer.AccountHeader;
@@ -22,12 +23,16 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import java.util.ArrayList;
+
 public class MainActivity extends BaseActivity {
     private Toolbar toolbar;
     private AccountHeader header = null;
     private Drawer drawer = null;
     Activity activity;
     Context context;
+    private ArrayList<CategoryModel> categoryList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
