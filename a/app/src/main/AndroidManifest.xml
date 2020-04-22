@@ -12,9 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.AboutDevActivity"></activity>
-        <activity android:name=".activity.CustomUrlActivity" />
-        <activity android:name=".activity.BaseActivity" />
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +20,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.BaseActivity" />
+        <activity android:name=".activity.CustomUrlActivity" />
+        <activity android:name=".activity.AboutDevActivity"></activity>
+        <activity
+            android:name="com.kt.std.quizeg1.activity.QuizPromptActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name="com.kt.std.quizeg1.activity.QuizActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
