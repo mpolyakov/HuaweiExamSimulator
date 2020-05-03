@@ -11,13 +11,14 @@ import android.widget.Toast;
 import com.kt.std.quizeg1.R;
 
 public class AppUtilities {
+
     private static long backPressed = 0;
 
     public static void showToast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-    public static void tapPromtToExit(Activity activity) {
+    public  static void tapPromtToExit(Activity activity) {
         if (backPressed + 2500 > System.currentTimeMillis()) {
             activity.finish();
         } else {
@@ -28,10 +29,6 @@ public class AppUtilities {
 
     public static void youtubeLink(Activity activity) {
         updateLink(activity, activity.getString(R.string.youtube_url));
-    }
-
-    public static void twitterLink(Activity activity) {
-
     }
 
     public static void facebookLink(Activity activity) {
@@ -46,7 +43,23 @@ public class AppUtilities {
         }
     }
 
-    public static void updateLink(Activity activity, String text) {
+    public static void twitterLink(Activity activity) {
+        try {
+            ApplicationInfo applicationInfo = activity.getPackageManager().getApplicationInfo("com.twitter.android", 0);
+            if (applicationInfo.enabled) {
+                updateLink(activity, activity.getString(R.string.twitter_user_id));
+                return;
+            }
+        } catch (PackageManager.NameNotFoundException ignored) {
+            updateLink(activity, activity.getString(R.string.twitter_url));
+        }
+    }
+
+    public static void googlePlusLink(Activity activity) {
+        updateLink(activity, activity.getString(R.string.google_plus_url));
+    }
+
+    private static void updateLink(Activity activity, String text) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(text));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PackageManager packageManager = activity.getPackageManager();
@@ -69,16 +82,15 @@ public class AppUtilities {
         }
     }
 
-    public static void rateThisApp(Activity activity){
+    public static void rateThisApp(Activity activity) {
         try {
-            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + activity.getPackageName())));
+            activity.startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + activity.getPackageName())));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }
-
 
 
 

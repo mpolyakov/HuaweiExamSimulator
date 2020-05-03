@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.kt.std.quizeg1.constants.AppConstants;
 
 public class ActivityUtilities {
+
     private static ActivityUtilities activityUtilities = null;
 
     public static ActivityUtilities getInstance() {
@@ -15,10 +16,10 @@ public class ActivityUtilities {
         return activityUtilities;
     }
 
-    public void invokeNewActivity(Activity activity, Class<?> tClass, boolean shouldFinish) {
+    public void invokeNewActivity(Activity activity, Class<?> tClass, boolean shoulgFinish) {
         Intent intent = new Intent(activity, tClass);
         activity.startActivity(intent);
-        if (shouldFinish) {
+        if (shoulgFinish) {
             activity.finish();
         }
     }
@@ -27,6 +28,15 @@ public class ActivityUtilities {
         Intent intent = new Intent(activity, tClass);
         intent.putExtra(AppConstants.BUNDLE_KEY_TITLE, pageTitle);
         intent.putExtra(AppConstants.BUNDLE_KEY_URL, pageUrl);
+        activity.startActivity(intent);
+        if (shouldFinish) {
+            activity.finish();
+        }
+    }
+
+    public void invokeCommonQuizActivity(Activity activity, Class<?> tClass, String categoryId, boolean shouldFinish) {
+        Intent intent = new Intent(activity, tClass);
+        intent.putExtra(AppConstants.BUNDLE_KEY_INDEX, categoryId);
         activity.startActivity(intent);
         if (shouldFinish) {
             activity.finish();
