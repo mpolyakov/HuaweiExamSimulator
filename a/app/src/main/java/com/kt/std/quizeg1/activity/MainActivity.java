@@ -13,6 +13,7 @@ import android.view.View;
 import com.kt.std.quizeg1.R;
 import com.kt.std.quizeg1.adapters.CategoryAdapter;
 import com.kt.std.quizeg1.constants.AppConstants;
+import com.kt.std.quizeg1.listeners.ListItemClickListener;
 import com.kt.std.quizeg1.models.quiz.CategoryModel;
 import com.kt.std.quizeg1.utilities.ActivityUtilities;
 import com.kt.std.quizeg1.utilities.AppUtilities;
@@ -72,6 +73,7 @@ public class MainActivity extends BaseActivity {
 
         initLoader();
         loadData();
+        initListener();
 
         final IProfile profile = new ProfileDrawerItem().withIcon(R.drawable.ic_dev);
 
@@ -135,7 +137,7 @@ public class MainActivity extends BaseActivity {
                             } else if (drawerItem.getIdentifier() == 22) {
                                 AppUtilities.twitterLink(activity);
                             } else if (drawerItem.getIdentifier() == 23) {
-                                AppUtilities.youtubeLink(activity);
+//                                AppUtilities.googlePlusLink(activity);
                             } else if (drawerItem.getIdentifier() == 30) {
                                 // TODO: invoke SettingActivity
                             } else if (drawerItem.getIdentifier() == 31) {
@@ -154,8 +156,8 @@ public class MainActivity extends BaseActivity {
                     }
                 })
                 .withSavedInstance(savedInstanceState)
-                .withShowDrawerOnFirstLaunch(true)
-                .withShowDrawerUntilDraggedOpened(true)
+                .withShowDrawerOnFirstLaunch(false)
+                .withShowDrawerUntilDraggedOpened(false)
                 .build();
     }
 
@@ -212,6 +214,19 @@ public class MainActivity extends BaseActivity {
         }
         hideLoader();
         adapter.notifyDataSetChanged();
+    }
+
+    private void initListener() {
+
+        // recycler list item click listener
+        adapter.setItemClickListener(new ListItemClickListener() {
+            @Override
+            public void onItemClick(int position, View view) {
+
+                CategoryModel model = categoryList.get(position);
+                ActivityUtilities.getInstance().invokeCommonQuizActivity(activity, QuizPromptActivity.class, model.getCategoryId(), true);
+            }
+        });
     }
 }
 

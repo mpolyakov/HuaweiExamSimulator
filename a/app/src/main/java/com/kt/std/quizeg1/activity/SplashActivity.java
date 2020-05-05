@@ -21,20 +21,17 @@ public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_DURATION = 2500;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        progressBar = findViewById(R.id.progressBar);
-        layout = findViewById(R.id.splashLayout);
-        imageView = findViewById(R.id.ivSplashIcon);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        layout = (ConstraintLayout) findViewById(R.id.splashLayout);
+        imageView = (ImageView) findViewById(R.id.ivSplashIcon);
         animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
-
     }
 
-    private void initFunctionality(){
+    private void initFunctionality() {
         layout.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -57,8 +54,6 @@ public class SplashActivity extends AppCompatActivity {
 
                     }
                 });
-
-
             }
         }, SPLASH_DURATION);
     }
@@ -67,7 +62,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         initFunctionality();
-
     }
 }
 
