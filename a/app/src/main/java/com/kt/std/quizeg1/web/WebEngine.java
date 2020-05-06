@@ -12,16 +12,19 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.kt.std.quizeg1.constants.AppConstants;
 import com.kt.std.quizeg1.listeners.WebListener;
 
 import java.net.URI;
 
 public class WebEngine {
+
     private WebView webView;
     private Activity activity;
     private Context context;
 
     private static final String GOOGLE_DOCS_VIEWER = "https://docs.google.com/viewerng/viewer?url=";
+
     private WebListener webListener;
 
     public WebEngine(WebView webView, Activity activity) {
@@ -32,8 +35,7 @@ public class WebEngine {
 
     public void initWebView() {
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setAppCacheMaxSize(1024 * 1024 * 10);
+        webView.getSettings().setAppCacheMaxSize(AppConstants.SITE_CACHE_SIZE);
         webView.getSettings().setAppCachePath(context.getCacheDir().getAbsolutePath());
         webView.getSettings().setAllowFileAccess(true);
         webView.getSettings().setAppCacheEnabled(true);
@@ -68,6 +70,7 @@ public class WebEngine {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String webUrl) {
+
                 loadPage(webUrl);
                 return true;
             }
@@ -84,11 +87,11 @@ public class WebEngine {
         });
     }
 
-
     public void loadPage(String webUrl) {
         if (isNetworkAvailable(context)) {
             if (webUrl.startsWith("tel:") ||
                     webUrl.startsWith("sms:") ||
+                    webUrl.startsWith("smsto:") ||
                     webUrl.startsWith("smsto:") ||
                     webUrl.startsWith("mailto:") ||
                     webUrl.contains("geo:")) {
@@ -99,14 +102,17 @@ public class WebEngine {
                     webUrl.endsWith(".docx") ||
                     webUrl.endsWith(".xls") ||
                     webUrl.endsWith(".xlsx") ||
-                    webUrl.contains(".pptx") ||
-                    webUrl.contains(".pdf")) {
+                    webUrl.endsWith(".pptx") ||
+                    webUrl.endsWith(".pdf")) {
                 webView.loadUrl(GOOGLE_DOCS_VIEWER + webUrl);
                 webView.getSettings().setBuiltInZoomControls(true);
             } else {
                 webView.loadUrl(webUrl);
             }
-        } else webListener.onNetworkError();
+
+        } else {
+            webListener.onNetworkError();
+        }
     }
 
     private boolean isNetworkAvailable(Context context) {
@@ -117,7 +123,6 @@ public class WebEngine {
     private void invokeNativeApp(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         activity.startActivity(intent);
-
     }
 }
 
