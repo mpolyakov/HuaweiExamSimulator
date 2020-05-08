@@ -7,7 +7,7 @@
     tools:context=".activity.AboutDevActivity">
 
     <include
-        android:id="@+id/toolBarTop"
+        android:id="@+id/toolbarTop"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -16,56 +16,55 @@
         android:id="@+id/imgDev"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="@dimen/materialize_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="clickView"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        app:srcCompat="@drawable/ic_dev"
+        android:onClick="clickView"/>
 
     <TextView
         android:id="@+id/tvDevTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="177dp"
-        android:text="TextView"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/developer_name"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgDev"
-        android:onClick="clickView"
-        tools:text="@string/developer_name" />
+        android:onClick="clickView"/>
 
     <TextView
         android:id="@+id/tvDevSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="177dp"
-        android:text="TextView"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/developer_detail"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDevTitle"
-        android:onClick="clickView"
-        tools:text="@string/developer_detail" />
+        android:onClick="clickView"/>
 
     <TextView
         android:id="@+id/tvDevText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="177dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="176dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="TextView"
-        android:onClick="clickView"
+        android:text="@string/developer_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDevSubtitle"
-        tools:text="@string/developer_message" />
+        android:onClick="clickView"/>
+
 </android.support.constraint.ConstraintLayout>

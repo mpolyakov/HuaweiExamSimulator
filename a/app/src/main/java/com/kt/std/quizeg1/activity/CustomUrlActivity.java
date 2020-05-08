@@ -48,7 +48,7 @@ public class CustomUrlActivity extends BaseActivity {
         setContentView(R.layout.activity_custom_url);
         initWebEngine();
         initLoader();
-        initToolBar(true);
+        initToolbar(true);
         setToolbarTitle(pageTitle);
 
         enableUpButton();

@@ -27,7 +27,8 @@ public class AboutDevActivity extends BaseActivity {
         tvDevSubTitle = findViewById(R.id.tvDevSubtitle);
         tvDevText = findViewById(R.id.tvDevText);
 
-        initToolBar(true);
+
+        initToolbar(true);
         setToolbarTitle(getString(R.string.about_dev));
         enableUpButton();
     }
